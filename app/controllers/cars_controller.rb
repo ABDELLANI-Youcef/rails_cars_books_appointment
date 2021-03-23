@@ -1,5 +1,10 @@
 class CarsController < ApplicationController
 
+  def index
+    @cars = Car.all
+    json_response(@cars)
+  end
+
   def create
     @car = Car.create!(car_params)
     json_response(@car, :created)
