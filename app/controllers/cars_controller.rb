@@ -2,7 +2,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.create!(car_params)
-    json_response(@todo, :created)
+    json_response(@car, :created)
   end
 
   private
