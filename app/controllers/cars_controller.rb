@@ -1,13 +1,13 @@
 class CarsController < ApplicationController
-  def index
+
+  def create
+    @car = Car.create!(car_params)
+    json_response(@todo, :created)
   end
 
-  def show
-  end
+  private
 
-  def new
-  end
-
-  def destroy
+  def car_params
+    params.permit(:mark, :model, :year)
   end
 end

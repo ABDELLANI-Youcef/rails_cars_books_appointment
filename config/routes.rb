@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'appointments/index'
-  get 'cars/index'
-  get 'cars/show'
-  get 'cars/new'
-  get 'cars/destroy'
+  resources :cars
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
