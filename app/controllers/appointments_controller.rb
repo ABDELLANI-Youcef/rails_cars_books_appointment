@@ -6,7 +6,9 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = @car.appointments.create!(appointment_params)
+    data =  appointment_params
+    data[:user_id] = current_user.id
+    @appointment = @car.appointments.create!( data)
     json_response(@appointment, :created)
   end
   
