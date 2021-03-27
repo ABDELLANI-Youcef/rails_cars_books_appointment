@@ -6,18 +6,16 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    data =  appointment_params
+    data = appointment_params
     data[:user_id] = current_user.id
-    @appointment = @car.appointments.create!( data)
+    @appointment = @car.appointments.create!(data)
     json_response(@appointment, :created)
   end
-  
+
   private
 
   def appointment_params
-    
     params.permit(:date, :city)
-    
   end
 
   def set_car
