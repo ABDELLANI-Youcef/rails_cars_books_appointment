@@ -20,6 +20,19 @@ class CarsController < ApplicationController
     json_response({ message: 'car deleted' }, :created)
   end
 
+  def update
+    raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
+
+    @car = Car.find(params[:id])
+    changements = params[:car]
+    @car.year = changements[:year]
+    @car[:mark] = changements[:mark]
+    @car.model = changements[:model]
+    raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless @car.save!
+
+    json_response(@car, :created)
+  end
+
   private
 
   def car_params
