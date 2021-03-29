@@ -8,6 +8,7 @@ class CarsController < ApplicationController
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
 
     @car = Car.create!(car_params)
+    @car.image_element = ImageElement.create(image_params)
     json_response(@car, :created)
   end
 
@@ -34,6 +35,10 @@ class CarsController < ApplicationController
   end
 
   private
+
+  def image_params
+    params.permit(:image)
+  end
 
   def car_params
     params.permit(:mark, :model, :year)
