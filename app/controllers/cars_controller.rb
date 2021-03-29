@@ -29,6 +29,7 @@ class CarsController < ApplicationController
     @car.year = changements[:year]
     @car[:mark] = changements[:mark]
     @car.model = changements[:model]
+    @car.price = changements[:price]
     raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless @car.save!
 
     json_response(@car, :created)
@@ -41,6 +42,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.permit(:mark, :model, :year)
+    params.permit(:mark, :model, :year, :price)
   end
 end

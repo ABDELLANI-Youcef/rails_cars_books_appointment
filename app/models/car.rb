@@ -14,6 +14,7 @@ class Car < ApplicationRecord
       mark: self.mark,
       model: self.model,
       year: self.year,
+      price: self.price,
       image: image_path,
     }
   end
