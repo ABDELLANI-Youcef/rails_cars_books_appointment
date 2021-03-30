@@ -17,12 +17,6 @@ class ImageElementsController < ApplicationController
 
   def update
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
-
-    
-    # changements = params[:car]
-    # @car.year = changements[:year]
-    # @car[:mark] = changements[:mark]
-    # @car.model = changements[:model]
     raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless @car.save!
 
     json_response(@car, :created)
