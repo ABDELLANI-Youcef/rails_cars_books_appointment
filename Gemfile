@@ -28,6 +28,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "rack-cors"
 
 gem "jwt", "~> 2.2", ">= 2.2.2"
+gem 'cloudinary', '~> 1.20'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
