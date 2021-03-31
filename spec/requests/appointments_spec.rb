@@ -11,7 +11,7 @@ RSpec.describe 'Appointments', type: :request do
 
   # Test suite for GET /cars/:car_id/appointments
   describe 'GET /cars/:car_id/appointments' do
-    before { get "/cars/#{car_id}/appointments", params: {}, headers: headers  }
+    before { get "/cars/#{car_id}/appointments", params: {}, headers: headers }
 
     context 'when car exists' do
       it 'returns status code 200' do
@@ -35,7 +35,6 @@ RSpec.describe 'Appointments', type: :request do
       end
     end
   end
-
 
   # Test suite for PUT /cars/:car_id/appointments
   describe 'POST /cars/:car_id/appointments' do

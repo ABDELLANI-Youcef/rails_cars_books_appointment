@@ -6,13 +6,11 @@ class ImageElementsController < ApplicationController
     image_path = rails_blob_path(@image.image)
     json_response(image: image_path)
   end
-  
 
   def create
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
 
-    
-    @car.image_elements.create!()
+    @car.image_elements.create!
   end
 
   def update

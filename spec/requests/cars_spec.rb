@@ -14,8 +14,6 @@ RSpec.describe 'Cars', type: :request do
       { mark: 'Bugatti', model: 'veron', year: 2011, price: 500 }.to_json
     end
 
-    
-
     context 'when the request is invalid' do
       let(:invalid_attributes) { { title: nil }.to_json }
       before { post '/cars', params: invalid_attributes, headers: headers }
