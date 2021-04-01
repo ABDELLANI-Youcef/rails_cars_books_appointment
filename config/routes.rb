@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  post 'auth/login', to: 'authentication#authenticate'
+  # post 'auth/login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
+  resources :authentication, only: [:create]
+  resources :users, only: [:create]
 
   resources :cars do
     resources :appointments
