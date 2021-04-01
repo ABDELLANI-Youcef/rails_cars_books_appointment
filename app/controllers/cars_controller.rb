@@ -9,9 +9,9 @@ class CarsController < ApplicationController
   def create
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
 
-    @car = Car.create!(car_params)
-    @car.image_element = ImageElement.create(image_params)
-    json_response(@car, :created)
+    car = Car.create!(car_params)
+    car.create_image(image_params)
+    json_response(car, :created)
   end
 
   def destroy
