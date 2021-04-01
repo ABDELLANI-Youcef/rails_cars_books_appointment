@@ -1,7 +1,9 @@
 class CarsController < ApplicationController
+  include CarHelper
   def index
-    @cars = Car.all
-    json_response(@cars)
+    cars = Car.all
+    response = cars_json(cars)
+    json_response(response)
   end
 
   def create
