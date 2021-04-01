@@ -1,14 +1,15 @@
 class AppointmentsController < ApplicationController
-  before_action :set_car
 
   def index
-    json_response(@car.appointments)
+    car = set_car
+    json_response(car.appointments)
   end
 
   def create
+    car = set_car
     data = appointment_params
     data[:user_id] = current_user.id
-    @appointment = @car.appointments.create!(data)
+    @appointment = car.appointments.create!(data)
     json_response(@appointment, :created)
   end
 
@@ -19,6 +20,6 @@ class AppointmentsController < ApplicationController
   end
 
   def set_car
-    @car = Car.find(params[:car_id])
+    Car.find(params[:car_id])
   end
 end
