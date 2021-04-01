@@ -1,8 +1,7 @@
 class AppointmentsController < ApplicationController
 
   def index
-    car = set_car
-    json_response(car.appointments)
+    json_response(current_user.appointments)
   end
 
   def create

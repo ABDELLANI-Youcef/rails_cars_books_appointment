@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
   resources :authentication, only: [:create]
   resources :users, only: [:create]
+  resources :appointments, only: [:index]
 
   resources :cars do
     resources :appointments
