@@ -1,7 +1,9 @@
 class AppointmentsController < ApplicationController
 
   def index
-    json_response(current_user.appointments)
+    size = current_user.appointments.size
+    appointments = current_user.appointments.paginate(page: params[:page], per_page: 2)
+    json_response({appointments: appointments, size: size})
   end
 
   def create

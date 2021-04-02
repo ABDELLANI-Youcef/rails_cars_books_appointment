@@ -30,6 +30,8 @@ gem 'rack-cors'
 gem 'cloudinary', '~> 1.20'
 gem 'jwt', '~> 2.2', '>= 2.2.2'
 
+gem 'will_paginate', '~> 3.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
