@@ -1,8 +1,8 @@
 module CarHelper
-  
   def cars_json(cars)
-    cars.map{|e| as_json(e)}
+    cars.map { |e| as_json(e) }
   end
+
   private
 
   def as_json(car, _options = {})
