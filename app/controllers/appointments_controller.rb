@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
 
   def index
     size = current_user.appointments.size
-    appointments = current_user.appointments.paginate(page: params[:page], per_page: 2)
+    appointments = current_user.appointments.paginate(page: params[:page], per_page: 6)
     json_response({appointments: appointments, size: size})
   end
 
