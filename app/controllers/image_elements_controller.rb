@@ -7,6 +7,7 @@ class ImageElementsController < ApplicationController
   end
 
   def update
+    current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]
     car = set_car
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
     raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless car.save!

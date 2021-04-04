@@ -7,6 +7,7 @@ class CarsController < ApplicationController
   end
 
   def create
+    current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
 
     car = Car.create!(car_params)
@@ -15,6 +16,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
+    current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
 
     car = Car.find(params[:id])
@@ -24,6 +26,7 @@ class CarsController < ApplicationController
   end
 
   def update
+    current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
 
     car = Car.find(params[:id])
