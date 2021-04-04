@@ -9,10 +9,14 @@ class CarsController < ApplicationController
   def create
     current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
+    params = car_params
+    car = Car.new(mark: params[:mark], model: params[:model], year: params[:year], price: params[:price]);
 
-    car = Car.create!(car_params)
-    car.create_image(image_params)
-    json_response(car, :created)
+    if Car.create_car_with_image(car, car_params)
+      json_response(car, :created) # you see i don't need instance variables here
+   else
+      json_response(car, :unprocessable_entity) #this is the better way to craft an error response rather than an exception handler
+   end
   end
 
   def destroy
@@ -47,6 +51,12 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.permit(:mark, :model, :year, :price)
+    params.permit(
+      :mark,
+      :model,
+      :year,
+      :price,
+      :image
+    )
   end
 end
