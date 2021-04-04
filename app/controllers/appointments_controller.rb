@@ -9,8 +9,8 @@ class AppointmentsController < ApplicationController
     car = set_car
     data = appointment_params
     data[:user_id] = current_user.id
-    @appointment = car.appointments.create!(data)
-    json_response(@appointment, :created)
+    appointment = car.appointments.create!(data)
+    json_response(appointment, :created)
   end
 
   private

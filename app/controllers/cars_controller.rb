@@ -17,8 +17,8 @@ class CarsController < ApplicationController
   def destroy
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
 
-    @car = Car.find(params[:id])
-    raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless @car.destroy
+    car = Car.find(params[:id])
+    raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless car.destroy
 
     json_response({ message: 'car deleted' }, :created)
   end
@@ -26,15 +26,15 @@ class CarsController < ApplicationController
   def update
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
 
-    @car = Car.find(params[:id])
+    car = Car.find(params[:id])
     changements = params[:car]
-    @car.year = changements[:year]
-    @car[:mark] = changements[:mark]
-    @car.model = changements[:model]
-    @car.price = changements[:price]
-    raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless @car.save!
+    car.year = changements[:year]
+    car[:mark] = changements[:mark]
+    car.model = changements[:model]
+    car.price = changements[:price]
+    raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless car.save!
 
-    json_response(@car, :created)
+    json_response(car, :created)
   end
 
   private
