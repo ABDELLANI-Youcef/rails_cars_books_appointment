@@ -7,12 +7,6 @@ class ImageElementsController < ApplicationController
     json_response(image: image_path)
   end
 
-  def create
-    raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
-
-    @car.image_elements.create!
-  end
-
   def update
     raise(ExceptionHandler::AuthenticationError, Message.unauthorized) unless current_user.admin
     raise(ExceptionHandler::RecordNotFound, Message.not_found(car)) unless @car.save!
