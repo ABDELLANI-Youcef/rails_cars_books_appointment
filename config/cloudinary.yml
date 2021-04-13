@@ -1,0 +1,18 @@
+development:
+  cloud_name: youcef-abdellani
+  api_key: '848896419949381'
+  api_secret: UW6A87qHIFB4CdQeVHUjOEWNG_A
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: youcef-abdellani
+  api_key: '848896419949381'
+  api_secret: UW6A87qHIFB4CdQeVHUjOEWNG_A
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: youcef-abdellani
+  api_key: '848896419949381'
+  api_secret: UW6A87qHIFB4CdQeVHUjOEWNG_A
+  enhance_image_tag: true
+  static_file_support: false

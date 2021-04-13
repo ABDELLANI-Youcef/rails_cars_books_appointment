@@ -32,3 +32,8 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+cloudinary:      
+  service: Cloudinary
+  access_key_id: 848896419949381
+  API_Secret: UW6A87qHIFB4CdQeVHUjOEWNG_A
